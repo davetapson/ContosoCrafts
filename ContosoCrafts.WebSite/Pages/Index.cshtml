@@ -1,4 +1,5 @@
 ﻿@page
+@using ContosoCrafts.WebSite.Components
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -9,7 +10,6 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@foreach(var product in Model.Products)
-{
-    <h2>@product.Title</h2>
-}
+@(await Html.RenderComponentAsync<ProductList>(RenderMode.ServerPrerendered))
+
+<script src="_framework/blazor.server.js"></script>
